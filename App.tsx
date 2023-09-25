@@ -3,6 +3,9 @@ import { Routes } from './src/routes'
 import { ThemeProvider } from 'styled-components'
 import theme from './src/theme'
 
+import { store } from './src/libs/redux/store'
+import { Provider } from 'react-redux'
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -11,7 +14,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes/>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </ThemeProvider>
   )
 }
