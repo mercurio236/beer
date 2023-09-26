@@ -7,7 +7,7 @@ import { Header } from '@components/Header'
 import { BeerList } from '@components/BeerList'
 
 export interface BeersProps {
-  id: number | null
+  id: number
   name: string
   description: string
   image_url: string
@@ -25,6 +25,10 @@ export function Home() {
     }
   }
 
+  function handleDatilBeer(id: number){
+    console.log(id)
+  }
+
   useEffect(() => {
     fetchListProducts()
   }, [])
@@ -35,7 +39,7 @@ export function Home() {
       <FlatList
         data={beers}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <BeerList data={item} />}
+        renderItem={({ item }) => <BeerList data={item} onPress={() => handleDatilBeer(item.id)}/>}
         showsVerticalScrollIndicator={false}
       />
     </ContainerHome>

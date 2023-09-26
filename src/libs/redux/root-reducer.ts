@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
-import  producSlice  from './products/slice'
+import  beerSlice  from './products/slice'
 
 export default combineReducers({
-    products: producSlice
+    products: beerSlice
 })
 

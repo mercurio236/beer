@@ -1,23 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { BeersProps } from '@screens/Home'
 
-interface BeersProps {
-  product: [{ id: number | null; name: string; description: string }]
-}
+
 
 const initialState: BeersProps[] = []
 
-export const producSlice = createSlice({
-  name: 'products',
+export const beerSlice = createSlice({
+  name: 'datailsBeers',
   initialState,
   reducers: {
-    receivedProducts: (state, action) => {
+    receivedInformationBeer: (state, action) => {
       return {
         ...state,
-        product: action.payload,
+        detailsBeers: action.payload,
       }
     },
   },
 })
 
-export const { receivedProducts } = producSlice.actions
-export default producSlice.reducer
+export const { receivedInformationBeer } = beerSlice.actions
+export default beerSlice.reducer
