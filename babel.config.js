@@ -12,6 +12,7 @@ module.exports = function (api) {
             "@routes": "./src/routes",
             "@screens": "./src/screens",
             "@utils": "./src/utils",
+            "@lib": "./src/lib",
           },
         },
       ],
