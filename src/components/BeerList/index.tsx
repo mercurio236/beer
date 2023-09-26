@@ -7,7 +7,6 @@ import {
   Details,
   Title,
 } from './styles'
-import { Text, Image } from 'react-native'
 import { Button } from '@components/Button'
 
 interface Props {
