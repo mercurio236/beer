@@ -8,6 +8,7 @@ import {
   Title,
 } from './styles'
 import { Text, Image } from 'react-native'
+import { Button } from '@components/Button'
 
 interface Props {
   data: BeersProps
@@ -20,6 +21,7 @@ export function BeerList({ data }: Props) {
         <Title>{data.name}</Title>
         <BeerImage source={{ uri: data.image_url }} />
         <Description>{data.description}</Description>
+        <Button title='Ver sobre'/>
       </CardBeer>
     </ContainerBeerList>
   )

@@ -7,7 +7,7 @@ export const ContainerBeerList = styled.View`
   align-items: center;
 `
 
-export const CardBeer = styled.TouchableOpacity`
+export const CardBeer = styled.View`
   border: 1px solid ${({ theme }) => theme.COLORS.GRAY_200};
   margin: 20px;
   border-radius: 8px;
@@ -42,3 +42,5 @@ export const Description = styled.Text`
 `
 
 export const Details = styled.Text``
+
+
