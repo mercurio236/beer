@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 
-import { api } from '../../lib/services/axios'
+import { api } from '../../libs/services/axios'
+import { ContainerHome } from './styles'
+import { Header } from '@components/Header'
+import { BeerList } from '@components/BeerList'
 
-interface BeersProps {
+export interface BeersProps {
   id: number | null
   name: string
   description: string
+  image_url: string
 }
 
 export function Home() {
@@ -14,7 +18,7 @@ export function Home() {
 
   async function fetchListProducts() {
     try {
-      const response = await api.get('beers')
+      const response = await api.get('beers', { params: { per_page: 8 } })
       setBeers(response.data)
     } catch (error) {
       console.log(error)
@@ -26,16 +30,14 @@ export function Home() {
   }, [])
 
   return (
-    <View>
-      <Text>
-        {beers.map((beer) => {
-          return (
-            <View style={{flex:1, justifyContent:'center'}}>
-              <Text style={{ color: '#000' }}>{beer.description}</Text>
-            </View>
-          )
-        })}
-      </Text>
-    </View>
+    <ContainerHome>
+      <Header title="Bebidas" />
+      <FlatList
+        data={beers}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => <BeerList data={item} />}
+        showsVerticalScrollIndicator={false}
+      />
+    </ContainerHome>
   )
 }
