@@ -7,12 +7,14 @@ import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/
 
 import { store } from './src/libs/redux/store'
 import { Provider } from 'react-redux'
+import { Loading } from '@components/Loading'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold
   })
+
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider
@@ -24,7 +26,7 @@ export default function App() {
           translucent
         />
         <Provider store={store}>
-          <Routes />
+          {fontsLoaded ? <Routes /> : <Loading/>}
         </Provider>
       </SafeAreaProvider>
     </ThemeProvider>
