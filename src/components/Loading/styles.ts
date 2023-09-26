@@ -9,4 +9,4 @@ export const ContainerLoading = styled.View`
 
 export const LoadingIndicator = styled.ActivityIndicator.attrs(({theme}) =>({
     color: theme.COLORS.BLUE_700
-}))
+}))``
