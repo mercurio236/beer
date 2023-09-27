@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Alert, FlatList } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { api } from '../../libs/services/axios'
 import { ContainerHome } from './styles'
 
 import { Header } from '@components/Header'
@@ -11,7 +10,8 @@ import { ListEmpty } from '@components/ListEmpty'
 import { Loading } from '@components/Loading'
 
 import { RootState } from 'src/libs/redux/store'
-import { fetchBeers } from '../../libs/redux/products/slice'
+import { fetchBeers, fetchDetailsBeer } from '../../libs/redux/products/slice'
+import { useNavigation } from '@react-navigation/native'
 
 export interface BeersProps {
   id: number
@@ -22,10 +22,14 @@ export interface BeersProps {
 
 export function Home() {
   const dispatch = useDispatch()
-  const { beers, isLoading } = useSelector((state: RootState) => state.products)
+  const navigation = useNavigation()
+  const { beers, isLoading } = useSelector(
+    (state: RootState) => state.products
+  )
 
   function handleDatilBeer(id: number) {
-    console.log(id)
+    dispatch(fetchDetailsBeer(id))
+    navigation.navigate('Products')
   }
 
   useEffect(() => {
