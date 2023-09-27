@@ -41,6 +41,17 @@ export const Description = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
 `
 
-export const Details = styled.Text``
+export const Details = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+
+`
+
+export const Line = styled.View`
+  border-top-width: 1px;
+  border-color: ${({theme}) => theme.COLORS.GRAY_200};
+  margin: 5px 0 6px 0;
+
+` 
 
 
