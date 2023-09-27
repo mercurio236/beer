@@ -1,4 +1,5 @@
-import { BeersProps } from '@screens/Home'
+import {memo} from 'react'
+
 import {
   BeerImage,
   CardBeer,
@@ -9,13 +10,14 @@ import {
   Title,
 } from './styles'
 import { Button } from '@components/Button'
+import { DTOBeer } from '@dtos/datailBeer'
 
 interface Props {
-  data: BeersProps
+  data: DTOBeer
   onPress: () => void
 }
 
-export function BeerList({ data, onPress }: Props) {
+function ListBeer({ data, onPress }: Props) {
   return (
     <ContainerBeerList key={data.id}>
       <CardBeer>
@@ -30,3 +32,5 @@ export function BeerList({ data, onPress }: Props) {
     </ContainerBeerList>
   )
 }
+
+export default memo(ListBeer)
