@@ -7,7 +7,6 @@ import { ContainerHome, LoadingHome } from './styles'
 import { Header } from '@components/Header'
 import { BeerList } from '@components/BeerList'
 import { ListEmpty } from '@components/ListEmpty'
-import { Loading } from '@components/Loading'
 
 import { RootState } from 'src/libs/redux/store'
 import { fetchBeers, fetchDetailsBeer } from '../../libs/redux/products/slice'

@@ -5,12 +5,14 @@ interface Props {
   beer: DTOBeer[]
   beers: DTOBeer[]
   isLoading: boolean
+  isLoadingDetailBeer: boolean
 }
 
 const initialState: Props = {
   beer: [],
   beers: [],
-  isLoading: true,
+  isLoading: false,
+  isLoadingDetailBeer: false
 }
 
 export const beerSlice = createSlice({
@@ -18,7 +20,7 @@ export const beerSlice = createSlice({
   initialState,
   reducers: {
     fetchBeers: (state) => {
-      state.isLoading = false
+      state.isLoading = true
     },
     fetchBeersSuccess: (state, action) => {
       state.beers = action.payload
@@ -28,14 +30,14 @@ export const beerSlice = createSlice({
       state.isLoading = false
     },
     fetchDetailsBeer: (state, action) => {
-      state.isLoading = false
+      state.isLoadingDetailBeer = true
     },
     fetchDetailsBeerSuccess: (state, action) => {
       state.beer = action.payload
-      state.isLoading = false
+      state.isLoadingDetailBeer = false
     },
     fetchDetailsBeerFail: (state) => {
-      state.isLoading = false
+      state.isLoadingDetailBeer = false
     },
   },
 })

@@ -11,14 +11,16 @@ import {
   Title,
 } from './styles'
 import { Header } from '@components/Header'
+import { View } from 'react-native'
 
 export function Products() {
-  const { beer, isLoading } = useSelector((state: RootState) => state.products)
-  console.log(isLoading)
+  const { beer, isLoadingDetailBeer } = useSelector(
+    (state: RootState) => state.products
+  )
   return (
     <>
       <Header backpage title="Detalhe da bebida" />
-      {isLoading ? (
+      {isLoadingDetailBeer ? (
         <LoadingProduct />
       ) : (
         beer.map((singleBeer) => {
@@ -48,31 +50,33 @@ export function Products() {
                 </Info>
                 <Line />
                 <About>Ingredientes</About>
-                {singleBeer.ingredients.malt.map((malt) => (
-                  <>
-                    <Info key={malt.name}>Nome: {malt.name}</Info>
+                {singleBeer.ingredients.malt.map((malt, index) => (
+                  <View key={index}>
+                    <Info>Nome: {malt.name}</Info>
                     <Info>
                       Quantidade: {malt.amount.value} {malt.amount.unit}
                     </Info>
                     <Line />
-                  </>
+                  </View>
                 ))}
                 <About>Lúpulo</About>
-                {singleBeer.ingredients.hops.map((lupulo) => (
-                  <>
-                    <Info>Nome: {lupulo.name}</Info>
+                {singleBeer.ingredients.hops.map((lupulo, index) => (
+                  <View key={index}>
+                    <Info key={index}>Nome: {lupulo.name}</Info>
                     <Info>
                       Quantidade: {lupulo.amount.value} - {lupulo.amount.unit}
                     </Info>
                     <Info>Adicionar: {lupulo.add}</Info>
                     <Info>Atributo: {lupulo.attribute}</Info>
                     <Line />
-                  </>
+                  </View>
                 ))}
                 <Info>Levedura: {singleBeer.ingredients.yeast}</Info>
                 <Line />
                 <About>Acompanhamentos</About>
-                <Info>{singleBeer.food_pairing.map((food) => food)}</Info>
+                {singleBeer.food_pairing.map((food, index) => (
+                  <Info key={index}>{food}</Info>
+                ))}
                 <Line />
                 <About>Dicas de cervejeiros</About>
                 <Info>{singleBeer.brewers_tips}</Info>
