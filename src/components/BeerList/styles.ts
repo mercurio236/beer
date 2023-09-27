@@ -19,7 +19,6 @@ export const CardBeer = styled.View`
 `
 
 export const BeerImage = styled(Image).attrs({
-  with: 50,
   height: 200,
   resizeMode: 'contain',
 })`

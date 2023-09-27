@@ -1,15 +1,86 @@
 import { useSelector } from 'react-redux'
 import { RootState } from 'src/libs/redux/store'
-import { ContainerProduct } from './styles'
+import {
+  About,
+  ContainerAbout,
+  ContainerProduct,
+  ImageProductDetails,
+  Info,
+  Line,
+  LoadingProduct,
+  Title,
+} from './styles'
 import { Header } from '@components/Header'
 
 export function Products() {
-  const { beer } = useSelector((state: RootState) => state.products)
-  
-
+  const { beer, isLoading } = useSelector((state: RootState) => state.products)
+  console.log(isLoading)
   return (
-    <ContainerProduct>
-        <Header backpage title='Detalhe da bebida'/>
-    </ContainerProduct>
+    <>
+      <Header backpage title="Detalhe da bebida" />
+      {isLoading ? (
+        <LoadingProduct />
+      ) : (
+        beer.map((singleBeer) => {
+          return (
+            <ContainerProduct key={singleBeer.id}>
+              <Title>{singleBeer.name}</Title>
+              <ImageProductDetails source={{ uri: singleBeer.image_url }} />
+              <Line />
+              <About>Sobre:</About>
+              <ContainerAbout>
+                <Info>Nome: {singleBeer.name}</Info>
+                <Info>Primeira fabricação: {singleBeer.first_brewed}</Info>
+                <Info>Slogan: {singleBeer.tagline}</Info>
+                <Info>Atenuação: {singleBeer.attenuation_level}</Info>
+                <Info>Volume: {singleBeer.volume.value}L</Info>
+                <Info>abu: {singleBeer.abv}</Info>
+                <Info>ibu: {singleBeer.ibu}</Info>
+                <Info>ph: {singleBeer.ph}</Info>
+                <Line />
+                <About>Método</About>
+                <Info>
+                  Temperatura: {singleBeer.method.mash_temp[0].temp.value} °C
+                </Info>
+                <Info>Duração: {singleBeer.method.mash_temp[0].duration}</Info>
+                <Info>
+                  Fermentação: {singleBeer.method.fermentation.temp.value} °C
+                </Info>
+                <Line />
+                <About>Ingredientes</About>
+                {singleBeer.ingredients.malt.map((malt) => (
+                  <>
+                    <Info key={malt.name}>Nome: {malt.name}</Info>
+                    <Info>
+                      Quantidade: {malt.amount.value} {malt.amount.unit}
+                    </Info>
+                    <Line />
+                  </>
+                ))}
+                <About>Lúpulo</About>
+                {singleBeer.ingredients.hops.map((lupulo) => (
+                  <>
+                    <Info>Nome: {lupulo.name}</Info>
+                    <Info>
+                      Quantidade: {lupulo.amount.value} - {lupulo.amount.unit}
+                    </Info>
+                    <Info>Adicionar: {lupulo.add}</Info>
+                    <Info>Atributo: {lupulo.attribute}</Info>
+                    <Line />
+                  </>
+                ))}
+                <Info>Levedura: {singleBeer.ingredients.yeast}</Info>
+                <Line />
+                <About>Acompanhamentos</About>
+                <Info>{singleBeer.food_pairing.map((food) => food)}</Info>
+                <Line />
+                <About>Dicas de cervejeiros</About>
+                <Info>{singleBeer.brewers_tips}</Info>
+              </ContainerAbout>
+            </ContainerProduct>
+          )
+        })
+      )}
+    </>
   )
 }

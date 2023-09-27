@@ -1,7 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { DTOBeer } from 'src/dtos/datailBeer'
 
-const initialState = {
-  beer: null,
+interface Props {
+  beer: DTOBeer[]
+  beers: DTOBeer[]
+  isLoading: boolean
+}
+
+const initialState: Props = {
+  beer: [],
   beers: [],
   isLoading: true,
 }
