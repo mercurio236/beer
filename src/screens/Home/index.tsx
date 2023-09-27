@@ -1,30 +1,22 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { Alert, FlatList } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { ContainerHome, LoadingHome } from './styles'
 
 import { Header } from '@components/Header'
-import { BeerList } from '@components/BeerList'
+import ListBeer from '@components/ListBeer'
 import { ListEmpty } from '@components/ListEmpty'
 
 import { RootState } from 'src/libs/redux/store'
 import { fetchBeers, fetchDetailsBeer } from '../../libs/redux/products/slice'
 import { useNavigation } from '@react-navigation/native'
-
-export interface BeersProps {
-  id: number
-  name: string
-  description: string
-  image_url: string
-}
+import { DTOBeer } from '@dtos/datailBeer'
 
 export function Home() {
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  const { beers, isLoading } = useSelector(
-    (state: RootState) => state.products
-  )
+  const { beers, isLoading } = useSelector((state: RootState) => state.products)
 
   function handleDatilBeer(id: number) {
     dispatch(fetchDetailsBeer(id))
@@ -42,11 +34,12 @@ export function Home() {
         <LoadingHome />
       ) : (
         <FlatList
-          data={beers as BeersProps[]}
+          data={beers as DTOBeer[]}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <BeerList data={item} onPress={() => handleDatilBeer(item.id)} />
+            <ListBeer data={item} onPress={() => handleDatilBeer(item.id)} />
           )}
+          shouldRasterizeIOS
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
             <ListEmpty message="Lista de bebidas vazia." />
