@@ -6,7 +6,7 @@ import { BeersProps } from '@screens/Home'
 const initialState: BeersProps[] = []
 
 export const beerSlice = createSlice({
-  name: 'datailsBeers',
+  name: 'beers',
   initialState,
   reducers: {
     receivedInformationBeer: (state, action) => {
@@ -15,6 +15,9 @@ export const beerSlice = createSlice({
         detailsBeers: action.payload,
       }
     },
+    fetchBeers: (state) =>{
+
+    }
   },
 })
 
