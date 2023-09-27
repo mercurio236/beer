@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { BeersProps } from '@screens/Home'
 
 
-
-const initialState: BeersProps[] = []
+const initialState = {
+  beer: 0,
+  beers: [],
+  isLoading: true
+}
 
 export const beerSlice = createSlice({
   name: 'beers',
@@ -15,11 +17,23 @@ export const beerSlice = createSlice({
         detailsBeers: action.payload,
       }
     },
-    fetchBeers: (state) =>{
-
-    }
+    fetchBeers: (state) => {
+      state.isLoading = false
+    },
+    fetchBeersSuccess: (state, action) => {
+      state.beers = action.payload
+      state.isLoading = false
+    },
+    fetchBeersFail: (state, action) => {
+      state.isLoading = false
+    },
   },
 })
 
-export const { receivedInformationBeer } = beerSlice.actions
+export const {
+  receivedInformationBeer,
+  fetchBeers,
+  fetchBeersSuccess,
+  fetchBeersFail,
+} = beerSlice.actions
 export default beerSlice.reducer
