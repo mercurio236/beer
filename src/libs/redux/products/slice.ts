@@ -21,14 +21,14 @@ export const beerSlice = createSlice({
       state.isLoading = false
     },
     fetchDetailsBeer: (state, action) => {
-      console.log('Slice')
+      state.isLoading = false
     },
     fetchDetailsBeerSuccess: (state, action) => {
       state.beer = action.payload
-      console.log( 'Beer => ', state.beer)
+      state.isLoading = false
     },
     fetchDetailsBeerFail: (state) => {
-      console.log(state)
+      state.isLoading = false
     },
   },
 })
