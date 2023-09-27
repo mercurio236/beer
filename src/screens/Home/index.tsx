@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Alert, FlatList } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { ContainerHome } from './styles'
+import { ContainerHome, LoadingHome } from './styles'
 
 import { Header } from '@components/Header'
 import { BeerList } from '@components/BeerList'
@@ -40,7 +40,7 @@ export function Home() {
     <ContainerHome>
       <Header title="Bebidas" />
       {isLoading ? (
-        <Loading />
+        <LoadingHome />
       ) : (
         <FlatList
           data={beers as BeersProps[]}
