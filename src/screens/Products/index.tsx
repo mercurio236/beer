@@ -12,22 +12,23 @@ import {
 } from './styles'
 import { Header } from '@components/Header'
 import { View } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 export function Products() {
   const { beer, isLoadingDetailBeer } = useSelector(
     (state: RootState) => state.products
-  )
-  return (
-    <>
+    )
+    return (
+      <SafeAreaProvider>
       <Header backpage title="Detalhe da bebida" />
       {isLoadingDetailBeer ? (
         <LoadingProduct />
-      ) : (
-        beer.map((singleBeer) => {
+        ) : (
+          beer?.map((singleBeer) => {
           return (
             <ContainerProduct key={singleBeer.id}>
               <Title>{singleBeer.name}</Title>
-              <ImageProductDetails source={{ uri: singleBeer.image_url }} />
+              <ImageProductDetails testID='beer-image' source={{ uri: singleBeer.image_url }} />
               <Line />
               <About>Sobre:</About>
               <ContainerAbout>
@@ -85,6 +86,6 @@ export function Products() {
           )
         })
       )}
-    </>
+    </SafeAreaProvider>
   )
 }
