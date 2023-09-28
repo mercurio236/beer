@@ -1,8 +1,7 @@
 import React from 'react'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TitleHeader, ContainerHeader } from './styles'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Dimensions } from 'react-native'
 import { ArrowLeft } from 'phosphor-react-native'
 import theme from '../../../src/theme'
 import { useNavigation } from '@react-navigation/native'
@@ -13,9 +12,9 @@ interface Props {
 }
 
 export function Header({ title, backpage = false }: Props) {
-  const insets = useSafeAreaInsets()
+  const { height } = Dimensions.get('screen')
   const { goBack } = useNavigation()
-  const paddingTop = insets.top + 42
+  const paddingTop = (height / 15) * 1 + 8
 
   return (
     <ContainerHeader

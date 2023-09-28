@@ -13,16 +13,16 @@ import { Button } from '@components/Button'
 import { DTOBeer } from '@dtos/datailBeer'
 
 export interface Props {
-  data: DTOBeer
+  data: DTOBeer | null
   onPress: () => void
 }
 
 function ListBeer({ data, onPress }: Props) {
   return (
-    <ContainerBeerList key={data?.id}>
+    <ContainerBeerList key={data?.id} testID='list-beer'>
       <CardBeer>
         <Title>{data?.name}</Title>
-        <BeerImage testID='beer-image' source={{ uri: data?.image_url }} />
+        <BeerImage source={{ uri: data?.image_url }} />
         <Line />
         <Details>Descrição:</Details>
         <Description>{data?.description}</Description>

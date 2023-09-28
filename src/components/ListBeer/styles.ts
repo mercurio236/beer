@@ -14,8 +14,6 @@ export const CardBeer = styled.View`
   padding: 15px;
   width: 80%;
   height: auto;
- 
-
 `
 
 export const BeerImage = styled(Image).attrs({
@@ -30,20 +28,17 @@ export const Title = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE?.LG}px;
   font-weight: 600;
   margin: 5px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY?.BOLD};
   text-align: center;
 `
 
 export const Description = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE?.XS}px;
   margin: 10px 0px 10px 0px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY?.REGULAR};
 `
 
 export const Details = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE?.SM}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY?.BOLD};
-
+  font-weight: 600;
 `
 
 export const Line = styled.View`
