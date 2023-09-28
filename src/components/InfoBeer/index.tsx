@@ -24,10 +24,9 @@ export function InfoBeer({ data, isLoadingDetailBeer }: Props) {
       ) : (
         data?.map((singleBeer) => {
           return (
-            <ContainerProduct key={singleBeer.id}>
+            <ContainerProduct key={singleBeer.id} testID='values-id'>
               <Title>{singleBeer.name}</Title>
               <ImageProductDetails
-                testID="beer-image"
                 source={{ uri: singleBeer.image_url }}
               />
               <Line />

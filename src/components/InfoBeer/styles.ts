@@ -39,7 +39,7 @@ export const Info = styled.Text`
 `
 
 export const LoadingProduct = styled.ActivityIndicator.attrs(({ theme }) => ({
-    color: theme.COLORS.BLUE_700,
+    color: theme.COLORS?.BLUE_700,
   }))`
     flex: 1;
     justify-content: center;
