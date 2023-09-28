@@ -29,4 +29,4 @@ export default {
     REGULAR: 'Roboto_400Regular',
     BOLD: 'Roboto_700Bold',
   },
-}
+} as const
