@@ -14,13 +14,14 @@ import { useNavigation } from '@react-navigation/native'
 import { DTOBeer } from '@dtos/datailBeer'
 
 export function Home() {
-  const dispatch = useDispatch()
-  const navigation = useNavigation()
+  const dispatch = useDispatch();
+  const { navigate } = useNavigation();
+
   const { beers, isLoading } = useSelector((state: RootState) => state.products)
 
   function handleDatilBeer(id: number) {
     dispatch(fetchDetailsBeer(id))
-    navigation.navigate('Products')
+    navigate('Products')
   }
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export function Home() {
     <ContainerHome>
       <Header title="Bebidas" />
       {isLoading ? (
-        <LoadingHome />
+        <LoadingHome testID='activity-indicator'/>
       ) : (
         <FlatList
           data={beers as DTOBeer[]}
