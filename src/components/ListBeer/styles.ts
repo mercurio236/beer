@@ -8,7 +8,7 @@ export const ContainerBeerList = styled.View`
 `
 
 export const CardBeer = styled.View`
-  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_200};
+  border: 1px solid ${({ theme }) => theme.COLORS?.GRAY_200};
   margin: 20px;
   border-radius: 8px;
   padding: 15px;
@@ -27,28 +27,28 @@ export const BeerImage = styled(Image).attrs({
 `
 
 export const Title = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE?.LG}px;
   font-weight: 600;
   margin: 5px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-family: ${({ theme }) => theme.FONT_FAMILY?.BOLD};
   text-align: center;
 `
 
 export const Description = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.XS}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE?.XS}px;
   margin: 10px 0px 10px 0px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  font-family: ${({ theme }) => theme.FONT_FAMILY?.REGULAR};
 `
 
 export const Details = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-size: ${({ theme }) => theme.FONT_SIZE?.SM}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY?.BOLD};
 
 `
 
 export const Line = styled.View`
   border-top-width: 1px;
-  border-color: ${({theme}) => theme.COLORS.GRAY_200};
+  border-color: ${({theme}) => theme.COLORS?.GRAY_200};
   margin: 5px 0 6px 0;
 
 ` 
