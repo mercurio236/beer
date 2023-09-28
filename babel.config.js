@@ -14,6 +14,8 @@ module.exports = function (api) {
             "@utils": "./src/utils",
             "@lib": "./src/lib",
             "@dtos": "./src/dtos",
+            "@__tests__": "./__tests__",
+
           },
         },
       ],

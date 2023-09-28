@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import theme from './src/theme'
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'
+import 'styled-components'
 
 import { store } from './src/libs/redux/store'
 import { Provider } from 'react-redux'
