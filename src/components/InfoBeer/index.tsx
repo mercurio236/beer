@@ -20,7 +20,7 @@ export function InfoBeer({ data, isLoadingDetailBeer }: Props) {
   return (
     <>
       {isLoadingDetailBeer ? (
-        <LoadingProduct />
+        <LoadingProduct testID='loading'/>
       ) : (
         data?.map((singleBeer) => {
           return (

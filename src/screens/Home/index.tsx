@@ -32,7 +32,7 @@ export function Home() {
     <ContainerHome>
       <Header title="Bebidas" />
       {isLoading ? (
-        <LoadingHome testID='activity-indicator'/>
+        <LoadingHome/>
       ) : (
         <FlatList
           data={beers as DTOBeer[]}

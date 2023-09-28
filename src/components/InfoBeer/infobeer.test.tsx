@@ -1,5 +1,5 @@
 import { mockBeerApiResponse } from '@__tests__/mocks/mockBeerApiResponse'
-import { render, screen } from '@testing-library/react-native'
+import { render, screen, waitFor } from '@testing-library/react-native'
 import { InfoBeer } from '.'
 
 describe('Component: InfoBeer', () => {
@@ -7,7 +7,10 @@ describe('Component: InfoBeer', () => {
     const data = mockBeerApiResponse
     render(<InfoBeer data={data} isLoadingDetailBeer />)
 
-    expect(data).not.toBeNull()
+    const isLoading = screen.getByTestId('loading')
+
+    expect(data).toHaveLength(2)
+    expect(isLoading).toBeTruthy()
   })
 
   it('not should values', () => {
