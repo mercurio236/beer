@@ -9,7 +9,7 @@ import { api } from '../../services/axios'
 
 function* fetchBeers() {
   try {
-    const response = yield call(api.get, 'beers', { params: { per_page: 8 } })
+    const response = yield call(api.get, 'beers', { params: { per_page: 10 } })
     yield put(fetchBeersSuccess(response.data))
   } catch (error) {
     console.log(error)

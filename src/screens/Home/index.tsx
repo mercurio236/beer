@@ -35,7 +35,6 @@ export function Home() {
         <LoadingHome />
       ) : (
         <FlatList
-          
           data={beers as DTOBeer[]}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
