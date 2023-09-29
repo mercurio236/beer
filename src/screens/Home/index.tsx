@@ -14,8 +14,8 @@ import { useNavigation } from '@react-navigation/native'
 import { DTOBeer } from '@dtos/datailBeer'
 
 export function Home() {
-  const dispatch = useDispatch();
-  const { navigate } = useNavigation();
+  const dispatch = useDispatch()
+  const { navigate } = useNavigation()
 
   const { beers, isLoading } = useSelector((state: RootState) => state.products)
 
@@ -32,9 +32,10 @@ export function Home() {
     <ContainerHome>
       <Header title="Bebidas" />
       {isLoading ? (
-        <LoadingHome/>
+        <LoadingHome />
       ) : (
         <FlatList
+          
           data={beers as DTOBeer[]}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (

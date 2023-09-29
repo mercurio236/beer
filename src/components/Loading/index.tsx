@@ -3,7 +3,7 @@ import { ContainerLoading, LoadingIndicator } from './styles'
 export function Loading() {
   return (
     <ContainerLoading>
-      <LoadingIndicator />
+      <LoadingIndicator testID='loading-general'/>
     </ContainerLoading>
   )
 }

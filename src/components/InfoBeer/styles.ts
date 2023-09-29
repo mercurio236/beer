@@ -14,18 +14,18 @@ export const ImageProductDetails = styled(Image).attrs({
 `
 export const Title = styled.Text`
   text-align: center;
-  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-size: ${({ theme }) => theme.FONT_SIZE?.XL}px;
+  font-weight: 600;
 `
 
 export const Line = styled.View`
   border-top-width: 1px;
-  border-color: ${({ theme }) => theme.COLORS.GRAY_200};
+  border-color: ${({ theme }) => theme.COLORS?.GRAY_200};
   margin: 5px 0 6px 0;
 `
 export const About = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-size: ${({ theme }) => theme.FONT_SIZE?.SM}px;
+  font-weight: 600;
 `
 
 export const ContainerAbout = styled.View`

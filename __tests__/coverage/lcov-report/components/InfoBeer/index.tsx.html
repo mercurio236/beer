@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -173,13 +173,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,12 +208,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -218,7 +218,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,7 +232,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,7 +259,7 @@ import {
 import { View } from 'react-native'
 &nbsp;
 interface Props {
-  data: DTOBeer[]
+  data: DTOBeer[] | null
   isLoadingDetailBeer: boolean
 }
 &nbsp;
@@ -269,65 +269,65 @@ export function InfoBeer({ data, isLoadingDetailBeer }: Props) {
       {isLoadingDetailBeer ? (
         &lt;LoadingProduct testID='loading'/&gt;
       ) : (
-<span class="branch-1 cbranch-no" title="branch not covered" >        data?.map(<span class="fstat-no" title="function not covered" >(s</span>ingleBeer) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >          return (</span>
+        data?.map((singleBeer) =&gt; {
+          return (
             &lt;ContainerProduct key={singleBeer.id} testID='values-id'&gt;
-              &lt;Title&gt;{singleBeer.name}&lt;/Title&gt;
+              &lt;Title&gt;{singleBeer?.name}&lt;/Title&gt;
               &lt;ImageProductDetails
-                source={{ uri: singleBeer.image_url }}
+                source={{ uri: singleBeer?.image_url }}
               /&gt;
               &lt;Line /&gt;
               &lt;About&gt;Sobre:&lt;/About&gt;
               &lt;ContainerAbout&gt;
-                &lt;Info&gt;Nome: {singleBeer.name}&lt;/Info&gt;
-                &lt;Info&gt;Primeira fabricação: {singleBeer.first_brewed}&lt;/Info&gt;
-                &lt;Info&gt;Slogan: {singleBeer.tagline}&lt;/Info&gt;
-                &lt;Info&gt;Atenuação: {singleBeer.attenuation_level}&lt;/Info&gt;
-                &lt;Info&gt;Volume: {singleBeer.volume.value}L&lt;/Info&gt;
-                &lt;Info&gt;abu: {singleBeer.abv}&lt;/Info&gt;
-                &lt;Info&gt;ibu: {singleBeer.ibu}&lt;/Info&gt;
-                &lt;Info&gt;ph: {singleBeer.ph}&lt;/Info&gt;
+                &lt;Info&gt;Nome: {singleBeer?.name}&lt;/Info&gt;
+                &lt;Info&gt;Primeira fabricação: {singleBeer?.first_brewed}&lt;/Info&gt;
+                &lt;Info&gt;Slogan: {singleBeer?.tagline}&lt;/Info&gt;
+                &lt;Info&gt;Atenuação: {singleBeer?.attenuation_level}&lt;/Info&gt;
+                &lt;Info&gt;Volume: {singleBeer.volume?.value}L&lt;/Info&gt;
+                &lt;Info&gt;abu: {singleBeer?.abv}&lt;/Info&gt;
+                &lt;Info&gt;ibu: {singleBeer?.ibu}&lt;/Info&gt;
+                &lt;Info&gt;ph: {singleBeer?.ph}&lt;/Info&gt;
                 &lt;Line /&gt;
                 &lt;About&gt;Método&lt;/About&gt;
                 &lt;Info&gt;
-                  Temperatura: {singleBeer.method.mash_temp[0].temp.value} °C
+                  Temperatura: {singleBeer.method.mash_temp[0]?.temp.value} °C
                 &lt;/Info&gt;
-                &lt;Info&gt;Duração: {singleBeer.method.mash_temp[0].duration}&lt;/Info&gt;
+                &lt;Info&gt;Duração: {singleBeer.method.mash_temp[0]?.duration}&lt;/Info&gt;
                 &lt;Info&gt;
-                  Fermentação: {singleBeer.method.fermentation.temp.value} °C
+                  Fermentação: {singleBeer.method.fermentation.temp?.value} °C
                 &lt;/Info&gt;
                 &lt;Line /&gt;
                 &lt;About&gt;Ingredientes&lt;/About&gt;
-                {singleBeer.ingredients.malt.map(<span class="fstat-no" title="function not covered" >(m</span>alt, index) =&gt; (
-<span class="cstat-no" title="statement not covered" >                  &lt;View key={index}&gt;</span>
-                    &lt;Info&gt;Nome: {malt.name}&lt;/Info&gt;
+                {singleBeer.ingredients?.malt.map((malt, index) =&gt; (
+                  &lt;View key={index}&gt;
+                    &lt;Info&gt;Nome: {malt?.name}&lt;/Info&gt;
                     &lt;Info&gt;
-                      Quantidade: {malt.amount.value} {malt.amount.unit}
+                      Quantidade: {malt?.amount.value} {malt.amount?.unit}
                     &lt;/Info&gt;
                     &lt;Line /&gt;
                   &lt;/View&gt;
                 ))}
                 &lt;About&gt;Lúpulo&lt;/About&gt;
-                {singleBeer.ingredients.hops.map(<span class="fstat-no" title="function not covered" >(l</span>upulo, index) =&gt; (
-<span class="cstat-no" title="statement not covered" >                  &lt;View key={index}&gt;</span>
-                    &lt;Info key={index}&gt;Nome: {lupulo.name}&lt;/Info&gt;
+                {singleBeer.ingredients?.hops.map((lupulo, index) =&gt; (
+                  &lt;View key={index}&gt;
+                    &lt;Info key={index}&gt;Nome: {lupulo?.name}&lt;/Info&gt;
                     &lt;Info&gt;
-                      Quantidade: {lupulo.amount.value} - {lupulo.amount.unit}
+                      Quantidade: {lupulo?.amount.value} - {lupulo.amount?.unit}
                     &lt;/Info&gt;
-                    &lt;Info&gt;Adicionar: {lupulo.add}&lt;/Info&gt;
-                    &lt;Info&gt;Atributo: {lupulo.attribute}&lt;/Info&gt;
+                    &lt;Info&gt;Adicionar: {lupulo?.add}&lt;/Info&gt;
+                    &lt;Info&gt;Atributo: {lupulo?.attribute}&lt;/Info&gt;
                     &lt;Line /&gt;
                   &lt;/View&gt;
                 ))}
-                &lt;Info&gt;Levedura: {singleBeer.ingredients.yeast}&lt;/Info&gt;
+                &lt;Info&gt;Levedura: {singleBeer.ingredients?.yeast}&lt;/Info&gt;
                 &lt;Line /&gt;
                 &lt;About&gt;Acompanhamentos&lt;/About&gt;
-                {singleBeer.food_pairing.map(<span class="fstat-no" title="function not covered" >(f</span>ood, index) =&gt; (
-<span class="cstat-no" title="statement not covered" >                  &lt;Info key={index}&gt;{food}&lt;/Info&gt;</span>
+                {singleBeer?.food_pairing.map((food, index) =&gt; (
+                  &lt;Info key={index}&gt;{food}&lt;/Info&gt;
                 ))}
                 &lt;Line /&gt;
                 &lt;About&gt;Dicas de cervejeiros&lt;/About&gt;
-                &lt;Info&gt;{singleBeer.brewers_tips}&lt;/Info&gt;
+                &lt;Info&gt;{singleBeer?.brewers_tips}&lt;/Info&gt;
               &lt;/ContainerAbout&gt;
             &lt;/ContainerProduct&gt;
           )
@@ -343,7 +343,7 @@ export function InfoBeer({ data, isLoadingDetailBeer }: Props) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-29T00:13:36.854Z
+                at 2023-09-29T01:53:47.268Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

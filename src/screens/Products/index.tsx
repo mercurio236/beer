@@ -11,7 +11,7 @@ export function Products() {
   return (
     <SafeAreaProvider>
       <Header backpage title="Detalhe da bebida" />
-      <InfoBeer data={beer} isLoadingDetailBeer={isLoadingDetailBeer} />
+      <InfoBeer data={beer} isLoadingDetailBeer={isLoadingDetailBeer}/>
     </SafeAreaProvider>
   )
 }
